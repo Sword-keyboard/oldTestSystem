@@ -11,7 +11,7 @@ import java.sql.SQLException;
 @WebServlet("/addmood")
 public class addmood extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
         int cogintion=Integer.parseInt(request.getParameter("cogintion"));

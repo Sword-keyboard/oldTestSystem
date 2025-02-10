@@ -12,6 +12,9 @@ import java.sql.Date;
 @WebServlet("/addsummary")
 public class addsummary extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
+
         int level1 = Integer.parseInt(request.getParameter("level1"));
         int level2 = Integer.parseInt(request.getParameter("level2"));
         int level3 = Integer.parseInt(request.getParameter("level3"));

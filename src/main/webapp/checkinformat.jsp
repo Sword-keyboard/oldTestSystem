@@ -127,7 +127,8 @@
         <%
             String type=request.getParameter("type");
             String idnumber=request.getParameter("idnumber");
-            if(type.equals("评估员")||type.equals("管理员")){%>
+            if(type.equals("评估员")||type.equals("管理员")){
+        %>
         <label for="checknumber">评估编号：</label>
         <input name="number" type="text" id="checknumber">
         <%}else{%>
@@ -195,7 +196,6 @@
                 <td colspan="4" style="text-align:center;">暂无数据</td>
             </tr>
             <% } %>
-            %>
         </table>
     </div>
 </div>

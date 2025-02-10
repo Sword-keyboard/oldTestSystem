@@ -11,7 +11,7 @@ import java.util.List;
 @WebServlet("/checksummary")
 public class checksummary extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
         String type = request.getParameter("type");

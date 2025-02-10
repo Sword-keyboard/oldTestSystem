@@ -26,6 +26,6 @@ public class checkinformat extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-        request.getRequestDispatcher("checkinformat").forward(request,response);
+        request.getRequestDispatcher("checkinformat.jsp").forward(request,response);
     }
 }

@@ -49,6 +49,8 @@
     </style>
 </head>
 <body>
+<div class="container">
+    <h2>操作界面</h2>
 <%
     String type = (String) session.getAttribute("type");
     String idnumber=(String) session.getAttribute("id");
@@ -56,11 +58,9 @@
     <a href="adduser.jsp" target="_blank">添加评估员</a>
     <a href="checkplan.jsp?" target="_blank">查看老年人能力评估基本信息表</a>
 <%} else if ("评估员".equals(type)) {%>
-<div class="container">
-    <h2>操作界面</h2>
     <a href="addplan.jsp" target="_blank">填写信息</a>
-    <a href="checkplan.jsp?" target="_blank">查看老年人能力评估基本信息表</a>
     <a href="adddaily.jsp" target="_blank">能力评估</a>
+    <a href="checkplan.jsp?" target="_blank">查看老年人能力评估基本信息表</a>
 <%}%>
     <a href="checkpeople.jsp?idnumber=<%=idnumber%>&type=<%=type%>"  target="_blank" >查看被评估者的基本信息表</a>
     <a href="checkinformat.jsp?idnumber=<%=idnumber%>&type=<%=type%>" target="_blank">查看信息提供者及联系人信息表</a>

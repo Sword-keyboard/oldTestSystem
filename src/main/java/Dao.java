@@ -115,17 +115,17 @@ public class Dao {
 
     public List<plandata> checkplan(String number) throws SQLException, ClassNotFoundException {
         String sql;
-        if(!number.isEmpty()) sql="select * from plan";
+        if(number.isEmpty()) sql="select * from plan";
         else sql="select * from plan where number=?";
         List<plandata> list = new ArrayList<>();
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             if(!number.isEmpty()) ps.setString(1,number);
             ResultSet rs=ps.executeQuery();
             if(rs.next()){
-                plandata d=new plandata(rs.getString("number"),
+                plandata data=new plandata(rs.getString("number"),
                         rs.getDate("date"),
                         rs.getString("reason"));
-                list.add(d);
+                list.add(data);
             }
             return list;
         }
@@ -280,10 +280,10 @@ public class Dao {
     }
 
     public boolean adddaily(dailydata data)throws SQLException,ClassNotFoundException{
-        String sql1="select number from people where number=?";
+        String sql1="select number from people where idnumber=?";
         String number = "";
         try(Connection conn=getConnection(); PreparedStatement ps=conn.prepareStatement(sql1)) {
-            ps.setString(1, data.getNumber());
+            ps.setString(1, data.getIdnumber());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 number = rs.getString("number");
@@ -310,10 +310,10 @@ public class Dao {
     }
 
     public boolean addmood(mooddata data)throws SQLException,ClassNotFoundException{
-        String sql1="select number from people where number=?";
+        String sql1="select number from people where idnumber=?";
         String number = "";
         try(Connection conn=getConnection(); PreparedStatement ps=conn.prepareStatement(sql1)) {
-            ps.setString(1, data.getNumber());
+            ps.setString(1, data.getIdnumber());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 number = rs.getString("number");
@@ -333,10 +333,10 @@ public class Dao {
     }
 
     public boolean addperception(perceptiondata data)throws SQLException,ClassNotFoundException{
-        String sql1="select number from people where number=?";
+        String sql1="select number from people where idnumber=?";
         String number = "";
         try(Connection conn=getConnection(); PreparedStatement ps=conn.prepareStatement(sql1)) {
-            ps.setString(1, data.getNumber());
+            ps.setString(1, data.getIdnumber());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 number = rs.getString("number");
@@ -355,10 +355,10 @@ public class Dao {
     }
 
     public boolean addsocial(socialdata data)throws SQLException,ClassNotFoundException{
-        String sql1="select number from people where number=?";
+        String sql1="select number from people where idnumber=?";
         String number = "";
         try(Connection conn=getConnection(); PreparedStatement ps=conn.prepareStatement(sql1)) {
-            ps.setString(1, data.getNumber());
+            ps.setString(1, data.getIdnumber());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 number = rs.getString("number");
@@ -380,10 +380,10 @@ public class Dao {
     }
 
     public boolean addsummary(summarydata data)throws SQLException,ClassNotFoundException{
-        String sql1="select number from people where number=?";
+        String sql1="select number from people where idnumber=?";
         String number = "";
         try(Connection conn=getConnection(); PreparedStatement ps=conn.prepareStatement(sql1)) {
-            ps.setString(1, data.getNumber());
+            ps.setString(1, data.getIdnumber());
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
                 number = rs.getString("number");
@@ -398,7 +398,7 @@ public class Dao {
             ps.setInt(5,data.getLevel5());
             ps.setInt(6,data.getLevel6());
             ps.setInt(7,data.getLevel7());
-            ps.setString(8,data.getName1());
+                ps.setString(8,data.getName1());
             ps.setString(9,data.getName2());
             ps.setDate(10,data.getDate1());
             ps.setString(11,data.getName3());
@@ -416,7 +416,7 @@ public class Dao {
             else sql = "select * from summary where number=?";
         }else sql = "select * from summary   where idnumber=?";
         try(Connection conn=getConnection(); PreparedStatement ps=conn.prepareStatement(sql)) {
-            ps.setString(1, number);
+            if(!number.isEmpty()) ps.setString(1, number);
             ResultSet rs = ps.executeQuery();
             List<summarydata> list=new ArrayList<>();
             if(rs.next()){

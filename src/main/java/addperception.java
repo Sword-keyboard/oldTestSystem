@@ -11,7 +11,7 @@ import java.sql.SQLException;
 @WebServlet("/addperception")
 public class addperception extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
         int consciousness = Integer.parseInt(request.getParameter("consciousness"));

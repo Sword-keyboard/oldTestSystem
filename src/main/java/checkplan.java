@@ -13,7 +13,7 @@ import java.sql.Date;
 @WebServlet("/checkplan")
 public class checkplan extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
         String number = request.getParameter("number");
