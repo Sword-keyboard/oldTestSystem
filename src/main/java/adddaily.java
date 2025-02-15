@@ -15,31 +15,37 @@ public class adddaily extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
 
         String idnumber = request.getParameter("idnumber");
-        int eat = Integer.parseInt(request.getParameter("eat"));
-        int bath = Integer.parseInt(request.getParameter("bath"));
-        int wash = Integer.parseInt(request.getParameter("wash"));
-        int cloth = Integer.parseInt(request.getParameter("cloth"));
-        int stool = Integer.parseInt(request.getParameter("stool"));
-        int urinal= Integer.parseInt(request.getParameter("urinal"));
-        int toilet= Integer.parseInt(request.getParameter("toile"));
-        int walk= Integer.parseInt(request.getParameter("walk"));
-        int move= Integer.parseInt(request.getParameter("move"));
-        int floor= Integer.parseInt(request.getParameter("floor"));
-        int total= Integer.parseInt(request.getParameter("total"));
-        int level= Integer.parseInt(request.getParameter("level"));
-        dailydata data=new dailydata(eat,bath,wash,cloth,stool,urinal,toilet,walk,move,
-                floor,total,level,"",idnumber);
-        Dao dao=new Dao();
+        int eat = parseInteger(request.getParameter("eat"), 0);
+        int bath = parseInteger(request.getParameter("bath"), 0);
+        int wash = parseInteger(request.getParameter("wash"), 0);
+        int cloth = parseInteger(request.getParameter("cloth"), 0);
+        int stool = parseInteger(request.getParameter("stool"), 0);
+        int urinal = parseInteger(request.getParameter("urinal"), 0);
+        int toilet = parseInteger(request.getParameter("toilet"), 0);
+        int walk = parseInteger(request.getParameter("walk"), 0);
+        int move = parseInteger(request.getParameter("move"), 0);
+        int floor = parseInteger(request.getParameter("floor"), 0);
+        int total = parseInteger(request.getParameter("total"), 0);
+        int level = parseInteger(request.getParameter("level"), 0);
+
+        dailydata data = new dailydata(eat, bath, wash, cloth, stool, urinal, toilet, walk, move, floor, total, level, "", idnumber);
+        Dao dao = new Dao();
         try {
-            if(dao.adddaily(data)) {
-                request.getSession().setAttribute("idnumber",idnumber);
+            if (dao.adddaily(data)) {
+                request.getSession().setAttribute("idnumber", idnumber);
                 response.sendRedirect("addmood.jsp");
-            }
-            else {
+            } else {
                 request.getRequestDispatcher("adddaily.jsp").forward(request, response);
             }
         } catch (SQLException | ClassNotFoundException e) {
             throw new ServletException(e);
         }
+    }
+
+    private int parseInteger(String value, int defaultValue) {
+        if (value == null || value.trim().isEmpty()) {
+            return defaultValue;
+        }
+        return Integer.parseInt(value);
     }
 }

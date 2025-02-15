@@ -14,11 +14,11 @@ public class addperception extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        int consciousness = Integer.parseInt(request.getParameter("consciousness"));
-        int vision= Integer.parseInt(request.getParameter("vision"));
-        int hearing= Integer.parseInt(request.getParameter("hearing"));
-        int communication= Integer.parseInt(request.getParameter("communication"));
-        int level= Integer.parseInt(request.getParameter("level"));
+        int consciousness = parseInteger(request.getParameter("consciousness"),0);
+        int vision= parseInteger(request.getParameter("vision"),0);
+        int hearing= parseInteger(request.getParameter("hearing"),0);
+        int communication= parseInteger(request.getParameter("communication"),0);
+        int level= parseInteger(request.getParameter("level"),0);
         String idnumber= request.getParameter("idnumber");
         perceptiondata data=new perceptiondata(consciousness,vision,hearing,communication,level,"",idnumber);
         Dao dao=new Dao();
@@ -33,5 +33,12 @@ public class addperception extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
             throw new ServletException(e);
         }
+    }
+
+    private int parseInteger(String value, int defaultValue) {
+        if (value == null || value.trim().isEmpty()) {
+            return defaultValue;
+        }
+        return Integer.parseInt(value);
     }
 }

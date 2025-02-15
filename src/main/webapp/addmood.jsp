@@ -108,7 +108,7 @@
 
         <div class="form-group">
             <label for="total">精神状态总分：</label>
-            <input name="total" type="text" id="total" readonly>
+            <input name="total" type="text" id="total">
         </div>
 
         <div class="form-group">

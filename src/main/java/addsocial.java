@@ -14,13 +14,13 @@ public class addsocial extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         response.setCharacterEncoding("UTF-8");
 
-        int live=Integer.parseInt(request.getParameter("live"));
-        int work=Integer.parseInt(request.getParameter("work"));
-        int timespace=Integer.parseInt(request.getParameter("timespace"));
-        int relation=Integer.parseInt(request.getParameter("relation"));
-        int socialing=Integer.parseInt(request.getParameter("socialing"));
-        int total=Integer.parseInt(request.getParameter("total"));
-        int level=Integer.parseInt(request.getParameter("level"));
+        int live=parseInteger(request.getParameter("live"),0);
+        int work=parseInteger(request.getParameter("work"),0);
+        int timespace=parseInteger(request.getParameter("timespace"),0);
+        int relation=parseInteger(request.getParameter("relation"),0);
+        int socialing=parseInteger(request.getParameter("socialing"),0);
+        int total=parseInteger(request.getParameter("total"),0);
+        int level=parseInteger(request.getParameter("level"),0);
         String idnumber=request.getParameter("idnumber");
         socialdata data=new socialdata(live,work,timespace,relation,socialing,total,level,"",idnumber);
         Dao dao=new Dao();
@@ -34,5 +34,12 @@ public class addsocial extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
             throw new ServletException(e);
         }
+    }
+
+    private int parseInteger(String value, int defaultValue) {
+        if (value == null || value.trim().isEmpty()) {
+            return defaultValue;
+        }
+        return Integer.parseInt(value);
     }
 }

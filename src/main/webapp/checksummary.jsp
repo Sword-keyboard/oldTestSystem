@@ -98,7 +98,7 @@
 <body>
 <div class="container">
     <h2>查看信息提供者及联系人信息表</h2>
-    <form action="checkinformat" method="get">
+    <form action="checksummary" method="get">
         <%
             String type=request.getParameter("type");
             String idnumber=request.getParameter("idnumber");
@@ -206,6 +206,16 @@
         <tr>
             <td>日期</td>
             <td><%=d.getDate2()%></td>
+        </tr>
+        <tr>
+            <h3>老年人能力初步等级划分标准</h3>
+            <p>0 能力完好：日常生活活动、精神状态、感知觉与沟通分级均为 0，社会参与分级为 0 或 1</p>
+            <p>1 轻度失能：日常生活活动分级为 0，但精神状态、感知觉与沟通中至少一项分级为 1 及以上，或社会参与的分级为 2； 或日常生活活动分级为 1，精神状态、感知觉与沟通、社会参与中至少有一项的分级为 0 或 1</p>
+            <p>2 中度失能：日常生活活动分级为 1，但精神状态、感知觉与沟通、社会参与均为 2，或有一项为 3； 或日常生活活动分级为 2，且精神状态、感知觉与沟通、社会参与中有 1-2 项的分级为 1 或 2</p>
+            <p>3 重度失能：日常生活活动的分级为 3； 或日常生活活动、精神状态、感知觉与沟通、社会参与分级均为 2； 或日常生活活动分级为 2，且精神状态、感知觉与沟通、社会参与中至少有一项分级为 3</p>
+        </tr>
+        <tr>
+            <img src="img.png" alt="老年人能力评估结果判定卡" style="width: 100%;height: 50%">
         </tr>
         <% } %>
         </tbody>

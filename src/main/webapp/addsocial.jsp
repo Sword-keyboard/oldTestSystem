@@ -132,6 +132,21 @@
             </select>
         </div>
 
+        <div class="form-group">
+            <label for="total">社会参与总分：</label>
+            <input name="total" type="text" id="total">
+        </div>
+
+        <div class="form-group">
+            <label for="level"> 社会参与分级：</label>
+            <select name="level" id="level">
+                <option value="0">0 能力完好：总分为 0-2 分</option>
+                <option value="1">1 轻度受损：总分为 3-7 分</option>
+                <option value="2">2 中度受损：总分 8-13 分</option>
+                <option value="3">3 重度受损：总分 14-20 分</option>
+            </select>
+        </div>
+
         <%
             String idnumber=(String)session.getAttribute("idnumber");
         %>

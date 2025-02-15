@@ -15,13 +15,13 @@ public class addsummary extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
 
-        int level1 = Integer.parseInt(request.getParameter("level1"));
-        int level2 = Integer.parseInt(request.getParameter("level2"));
-        int level3 = Integer.parseInt(request.getParameter("level3"));
-        int level4 = Integer.parseInt(request.getParameter("level4"));
-        int level5 = Integer.parseInt(request.getParameter("level5"));
-        int level6 = Integer.parseInt(request.getParameter("level6"));
-        int level7 = Integer.parseInt(request.getParameter("level7"));
+        int level1 = parseInteger(request.getParameter("level1"),0);
+        int level2 = parseInteger(request.getParameter("level2"),0);
+        int level3 = parseInteger(request.getParameter("level3"),0);
+        int level4 = parseInteger(request.getParameter("level4"),0);
+        int level5 = parseInteger(request.getParameter("level5"),0);
+        int level6 = parseInteger(request.getParameter("level6"),0);
+        int level7 = parseInteger(request.getParameter("level7"),0);
         String name1=request.getParameter("name1");
         String name2=request.getParameter("name2");
         Date date1=Date.valueOf(request.getParameter("date1"));
@@ -40,5 +40,12 @@ public class addsummary extends HttpServlet {
         } catch (SQLException | ClassNotFoundException e) {
             throw new ServletException(e);
         }
+    }
+
+    private int parseInteger(String value, int defaultValue) {
+        if (value == null || value.trim().isEmpty()) {
+            return defaultValue;
+        }
+        return Integer.parseInt(value);
     }
 }

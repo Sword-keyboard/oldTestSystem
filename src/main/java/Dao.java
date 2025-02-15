@@ -342,14 +342,15 @@ public class Dao {
                 number = rs.getString("number");
             }
         }
-        String sql = "insert into perception values(?,?,?,?,?,?)";
+        String sql = "insert into perception values(?,?,?,?,?,?,?)";
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, data.getConsciousness());
             ps.setInt(2, data.getVision());
             ps.setInt(3,data.getHearing());
-            ps.setInt(4, data.getLevel());
-            ps.setString(5, number);
-            ps.setString(6, data.getIdnumber());
+            ps.setInt(4, data.getCommunication());
+            ps.setInt(5,data.getLevel());
+            ps.setString(6,number);
+            ps.setString(7, data.getIdnumber());
             return ps.executeUpdate()>0;
         }
     }
@@ -364,7 +365,7 @@ public class Dao {
                 number = rs.getString("number");
             }
         }
-        String sql = "insert into social values(?,?,?,?,?,?)";
+        String sql = "insert into social values(?,?,?,?,?,?,?,?,?)";
         try (Connection conn = getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
             ps.setInt(1, data.getLive());
             ps.setInt(2, data.getWork());
@@ -414,7 +415,7 @@ public class Dao {
         if(type.equals("评估员")||type.equals("管理员")) {
             if (number.isEmpty()) sql = "select * from summary";
             else sql = "select * from summary where number=?";
-        }else sql = "select * from summary   where idnumber=?";
+        }else sql = "select * from summary where idnumber=?";
         try(Connection conn=getConnection(); PreparedStatement ps=conn.prepareStatement(sql)) {
             if(!number.isEmpty()) ps.setString(1, number);
             ResultSet rs = ps.executeQuery();
@@ -451,6 +452,5 @@ public class Dao {
             return ps.executeUpdate()>0;
         }
     }
-
 
 }

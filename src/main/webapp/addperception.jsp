@@ -119,6 +119,18 @@
             </select>
         </div>
 
+        <div class="form-group">
+            <label for="level"> 感知觉等级分级：</label>
+            <select name="level" id="level">
+                <option value="0">0 能力完好：意识清醒，且视力和听力评为 0 或 1，沟通评为 0</option>
+                <option value="1">1 轻度受损：意识清醒，但视力或听力中至少一项评为 2，或沟通评为 1</option>
+                <option value="2">2 中度受损：意识清醒，但视力或听力中至少一项评为 3，或沟通评为 2；
+                    或嗜睡，视力或听力评定为 3 及以下，沟通评定为 2 及以下</option>
+                <option value="3">3 重度受损：意识清醒或嗜睡，但视力或听力中至少一项评为 4，或沟通评为 3；
+                    或昏睡/昏迷 </option>
+            </select>
+        </div>
+
         <%
             String idnumber=(String)session.getAttribute("idnumber");
         %>
